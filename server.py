@@ -3,6 +3,11 @@ MCP server for Red Hat Assisted Service API.
 
 This module provides Model Context Protocol (MCP) tools for interacting with
 Red Hat's Assisted Service API to manage OpenShift cluster installations.
+
+Environment Variables:
+    TRANSPORT: Transport type ("sse" or "streamable-http", default: "sse")
+    OFFLINE_TOKEN: Red Hat OCM offline token for authentication
+    SSO_URL: SSO endpoint URL (default: Red Hat SSO)
 """
 
 import json
@@ -672,4 +677,5 @@ if __name__ == "__main__":
 
     initiate_metrics(list_tools())
     app.add_route("/metrics", metrics)
+
     uvicorn.run(app, host="0.0.0.0")
